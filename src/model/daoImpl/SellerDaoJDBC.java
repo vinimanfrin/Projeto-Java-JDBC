@@ -66,7 +66,7 @@ public class SellerDaoJDBC implements SellerDao {
     }
 
     @Override
-    public void update(Seller obj) {
+    public void update(Seller obj,Integer idSellerUpdate) {
         PreparedStatement st = null;
         try{
             st = conn.prepareStatement(
@@ -79,7 +79,7 @@ public class SellerDaoJDBC implements SellerDao {
             st.setDate(3, (Date) obj.getBirthDate());
             st.setDouble(4,obj.getBaseSalary());
             st.setInt(5,obj.getDepartment().getId());
-            st.setInt(6,obj.getId());
+            st.setInt(6,idSellerUpdate);
 
             st.executeUpdate();
         }
@@ -92,12 +92,12 @@ public class SellerDaoJDBC implements SellerDao {
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Integer idSellerDelleted) {
         PreparedStatement st = null;
         try{
             st = conn.prepareStatement("DELETE FROM seller WHERE Id = ?");
 
-            st.setInt(1,id);
+            st.setInt(1,idSellerDelleted);
 
             st.executeUpdate();
         }

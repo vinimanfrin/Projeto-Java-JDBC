@@ -1,45 +1,50 @@
 import model.dao.DaoFactory;
+import model.dao.DepartmentDao;
 import model.dao.SellerDao;
+import model.daoImpl.DepartmentDaoJDBC;
 import model.daoImpl.SellerDaoJDBC;
 import model.entites.Department;
 import model.entites.Seller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
+        DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
+
+
+
+        Department depTeste = new Department(null,"Comida");
+//        departmentDao.insert(depTeste);
+
+        Department dep = new Department(6,"Pet");
+//        departmentDao.update(dep,16);
+
+//        departmentDao.deleteById(7);
+
+//        Department departmentTeste =  departmentDao.findById(8);
+//        System.out.println(departmentTeste);
+        List<Department> listTeste = departmentDao.findAll();
+        System.out.println(listTeste);
+
+
+
+
+
+
+
+
         SellerDao sellerDao = DaoFactory.createSellerDao();
+        //sellerDao.deleteById(10); // teste seller deleteById
 
-//        System.out.println("=== TEST 1: seller findById ===");
-//        Seller seller = sellerDao.findById(3);
-//        System.out.println(seller);
-//
-//        System.out.println("\n=== TEST 2: seller findByDepartment ===");
-//        Department department = new Department(2,null);
-//        List<Seller> list = SellerDao.findByDepartment(department);
-//        for (Seller obj : list) {
-//            System.out.println(obj);
-//        }
-//        System.out.println("\n=== TEST 3: seller findAll ===");
-//        List<Seller> list = SellerDao.findAll();
-//        for (Seller obj : list) {
-//           System.out.println(obj);
-//       }
-//        System.out.println("\n=== TEST 4: seller insert ===");
-//        Seller newSeller = new Seller(null,"Gred","greg@gmail.com",new Date(),4000.0,department);
-//        SellerDao.insert(newSeller);
-//        System.out.println("Inserted! New id= "+ newSeller.getId());
-//
-//        System.out.println("\n=== TEST 5: seller update ===");
-//        seller = sellerDao.findById(1);
-//        seller.setName("Martha Waine");
-//        sellerDao.update(seller);
-//        System.out.println("Update completed");
+        //Seller sellerTeste = new Seller(9,"Samara","samara@gmail.com", new Date(),4000.0,dep);
 
-        System.out.println("\n=== TEST 5: seller delete ===");
-        sellerDao.deleteById(8);
-        System.out.println("Delete completed");
+        //sellerDao.update(sellerTeste,9); // teste seller update
 
     }
 }
